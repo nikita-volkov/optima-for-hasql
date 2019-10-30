@@ -3,8 +3,6 @@ where
 
 import OptimaForHasql.Prelude
 import Optima
-import qualified Hasql.Pool as Pool
-import qualified Hasql.Connection as Connection
 import qualified Data.Text.Encoding as Text
 
 
