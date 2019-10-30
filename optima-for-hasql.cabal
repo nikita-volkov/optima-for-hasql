@@ -23,6 +23,7 @@ library
   exposed-modules:
     OptimaForHasql.Param
     OptimaForHasql.ParamGroup
+    OptimaForHasql.Params
   other-modules:
     OptimaForHasql.Prelude
   build-depends:
