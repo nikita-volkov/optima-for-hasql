@@ -77,3 +77,11 @@ import Unsafe.Coerce as Exports
 -- text
 -------------------------
 import Data.Text as Exports (Text)
+
+-- bytestring
+-------------------------
+import Data.ByteString as Exports (ByteString)
+
+-- time
+-------------------------
+import Data.Time as Exports
