@@ -28,7 +28,7 @@ library
     OptimaForHasql.Prelude
   build-depends:
     base >=4.9 && <5,
-    bytestring >=0.10.10 && <0.11,
+    bytestring >=0.10 && <0.11,
     hasql >=1.4 && <1.5,
     hasql-pool >=0.5.1 && <0.6,
     optima >=0.4 && <0.5,
