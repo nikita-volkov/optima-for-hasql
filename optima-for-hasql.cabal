@@ -1,5 +1,5 @@
 name: optima-for-hasql
-version: 0.1
+version: 0.1.0.1
 synopsis: Command-line arguments parsing for Hasql
 category: Command Line, Options, Hasql
 homepage: https://github.com/nikita-volkov/optima-for-hasql
