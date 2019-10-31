@@ -33,4 +33,4 @@ library
     hasql-pool >=0.5.1 && <0.6,
     optima >=0.4 && <0.5,
     text >=1 && <2,
-    time >=1.8 && <2
+    time >=1.6 && <2
