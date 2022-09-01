@@ -1,42 +1,43 @@
-module OptimaForHasql.Param
-where
+module OptimaForHasql.Param where
 
-import OptimaForHasql.Prelude
-import Optima
 import qualified Data.Text.Encoding as Text
+import Optima
+import OptimaForHasql.Prelude
 
-
-{-|
-Amount of connections in the pool.
--}
+-- |
+-- Amount of connections in the pool.
 poolSize :: Param Int
 poolSize =
-  value "Amount of connections in the pool"
-    (showable 1) unformatted implicitlyParsed
-
-{-|
-Amount of seconds for which the unused connections are kept open.
--}
-poolTimeout :: Param NominalDiffTime
-poolTimeout =
-  value "Amount of seconds for which the unused connections are kept open"
-    (showable 10) unformatted implicitlyParsed
-
-{-|
-Server host.
--}
-host :: Param ByteString
-host =
-  fmap Text.encodeUtf8 $
   value
-    "Server host"
-    (explicitlyRepresented id "127.0.0.1")
+    "Amount of connections in the pool"
+    (showable 1)
     unformatted
     implicitlyParsed
 
-{-|
-Server port.
--}
+-- |
+-- How long it takes until the attempt to connect is considered timed out.
+-- In microseconds.
+poolAcquisitionTimeout :: Param (Maybe Int)
+poolAcquisitionTimeout =
+  value
+    "How long it takes until the attempt to connect is considered timed out"
+    (showable (Just 10))
+    unformatted
+    (optional (fmap (round . (*) 1000000 . realToFrac @DiffTime @Rational) implicitlyParsed))
+
+-- |
+-- Server host.
+host :: Param ByteString
+host =
+  fmap Text.encodeUtf8 $
+    value
+      "Server host"
+      (explicitlyRepresented id "127.0.0.1")
+      unformatted
+      implicitlyParsed
+
+-- |
+-- Server port.
 port :: Param Word16
 port =
   value
@@ -45,38 +46,35 @@ port =
     unformatted
     implicitlyParsed
 
-{-|
-Username.
--}
+-- |
+-- Username.
 user :: Param ByteString
 user =
   fmap Text.encodeUtf8 $
-  value
-    "Username"
-    (explicitlyRepresented id "postgres")
-    unformatted
-    implicitlyParsed
+    value
+      "Username"
+      (explicitlyRepresented id "postgres")
+      unformatted
+      implicitlyParsed
 
-{-|
-Password.
--}
+-- |
+-- Password.
 password :: Param ByteString
 password =
   fmap Text.encodeUtf8 $
-  value
-    "Password"
-    (explicitlyRepresented id "")
-    unformatted
-    implicitlyParsed
+    value
+      "Password"
+      (explicitlyRepresented id "")
+      unformatted
+      implicitlyParsed
 
-{-|
-Database name.
--}
+-- |
+-- Database name.
 database :: Param ByteString
 database =
   fmap Text.encodeUtf8 $
-  value
-    "Database name"
-    (explicitlyRepresented id "postgres")
-    unformatted
-    implicitlyParsed
+    value
+      "Database name"
+      (explicitlyRepresented id "postgres")
+      unformatted
+      implicitlyParsed
